@@ -1,36 +1,107 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🦉 OwlyDev — Personal Landing Page
 
-## Getting Started
+Landing page oficial de **OwlyDev**, una marca personal enfocada en **desarrollo web moderno**, **experiencias digitales limpias** y **soluciones técnicas bien estructuradas**.
 
-First, run the development server:
+Este proyecto funciona como **portafolio**, **presentación profesional** y **base escalable** para futuros servicios, demos y productos.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ✨ Visión
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+OwlyDev nace con una idea clara:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+> Construir experiencias web **claras, rápidas y funcionales**,  
+> donde el diseño y la arquitectura conviven en equilibrio.
 
-## Learn More
+Este landing no es solo una página informativa, sino el **punto de entrada** a todo el ecosistema OwlyDev.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🧱 ¿Qué incluye este landing?
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- 🎯 Secciones claras y orientadas a conversión  
+- 🧩 Arquitectura modular y escalable  
+- 🧠 Enfoque en UX/UI y jerarquía visual  
+- 🧪 Espacios para demos reales de proyectos  
+- 📱 Diseño responsive (mobile-first)  
+- 🌙 Estética sobria, moderna y profesional  
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🛠️ Tecnologías utilizadas
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Next.js (App Router)**
+- **React**
+- **TypeScript**
+- **Tailwind CSS**
+- **Componentes reutilizables**
+- **Arquitectura por secciones**
+
+---
+
+## 📂 Estructura del proyecto
+
+app/
+├─ layout.tsx # Layout principal
+├─ page.tsx # Landing principal
+├─ globals.css # Estilos globales
+└─ demos/ # Demos y showcases
+
+components/ # Componentes reutilizables
+sections/ # Secciones del landing
+hooks/ # Hooks personalizados
+lib/ # Utilidades y configuración
+
+
+Diseñado para crecer sin romperse.
+
+---
+
+## 🚀 Objetivo del proyecto
+
+Este landing busca:
+
+- Servir como **portafolio profesional**
+- Presentar servicios y habilidades de OwlyDev
+- Ser la base para:
+  - Demos interactivas
+  - Dashboards
+  - Landing pages
+  - Bots y automatizaciones
+  - Consultorías técnicas y UX/UI
+
+---
+
+## 🧪 Estado del proyecto
+
+🟡 **En desarrollo activo**
+
+- La estructura base está definida  
+- Secciones y demos en construcción  
+- Optimización visual y de contenido en progreso  
+
+Este repositorio evoluciona junto a la marca.
+
+---
+
+## 📌 Próximos pasos
+
+- [ ] Integrar demos funcionales
+- [ ] Optimizar performance y SEO
+- [ ] Añadir capturas reales
+- [ ] Deploy en producción
+- [ ] Dominio personalizado
+
+---
+
+## 📄 Licencia
+
+Este proyecto forma parte del ecosistema **OwlyDev**.  
+El código puede usarse como referencia, pero **la identidad visual y marca están reservadas**.
+
+---
+
+## 🦉 OwlyDev
+
+**Diseño. Código. Estructura.**  
+Construyendo soluciones web con criterio técnico y visión a largo plazo.
