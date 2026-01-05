@@ -133,6 +133,34 @@ body {
   font-family: var(--font-outfit), system-ui, sans-serif;
 }
 
+
+/* --- Infinite marquee (Desktop) --- */
+@keyframes owly-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.owly-marquee {
+  animation: owly-marquee 22s linear infinite;
+  will-change: transform;
+}
+
+.owly-marquee-pause:hover .owly-marquee {
+  animation-play-state: paused;
+}
+
+/* Tamaño responsivo de cards en el carrusel (Desktop) */
+.owly-cardW {
+  width: clamp(320px, 40vw, 560px);
+}
+
+
+
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 export default function Contact() {
   return (
     <section id="contact" className="scroll-mt-24">
-      <div className="mx-auto max-w-6xl px-4 py-16">
+      <div className="mx-auto max-w-6xl px-4 py-16 min-h-[88svh] flex items-center">
         <div className="rounded-3xl border border-white/10 bg-white/5 p-8">
           <h2 className="text-3xl font-extrabold text-white">Contacto</h2>
           <p className="mt-2 text-white/70">
