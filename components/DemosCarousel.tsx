@@ -10,6 +10,8 @@ import {
   useAnimationFrame,
   useMotionValue,
 } from "framer-motion";
+import Image from "next/image";
+
 
 /* ----------------------------- Card UI ----------------------------- */
 
@@ -17,20 +19,49 @@ function DemoCard({
   title,
   desc,
   href,
+  image,
 }: {
   title: string;
   desc: string;
   href: string;
+  image?: {
+    desktop: string;
+    mobile: string;
+  };
 }) {
+  const hasImage = Boolean(image);
+
   return (
     <div className="group relative h-full overflow-hidden rounded-2xl border border-white/10 bg-white/5 transition-transform duration-200 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(0,0,0,0.25)]">
-      {/* Placeholder (más alto) */}
-      <div className="relative aspect-[16/10] w-full bg-black/20">
-        <div className="flex h-full w-full items-center justify-center text-sm text-white/50">
-          Screenshot pendiente (WebP)
-        </div>
+      {/* Media */}
+      <div className="relative w-full bg-black/20 aspect-[8/6]">
+        {hasImage ? (
+          <>
+            {/* Desktop */}
+            <Image
+              src={image!.desktop}
+              alt={title}
+              fill
+              className="hidden md:block object-fill"
+              sizes="(min-width: 768px) 50vw"
+            />
 
-        {/* Overlay CTA al hover */}
+            {/* Mobile */}
+            <Image
+              src={image!.mobile}
+              alt={title}
+              fill
+              className="block md:hidden object-cover"
+              sizes="100vw"
+            />
+          </>
+        ) : (
+          <div className="flex h-full w-full items-center justify-center text-sm text-white/50">
+            Screenshot pendiente (WebP)
+          </div>
+        )}
+
+        {/* Overlay CTA */}
         <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
           <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between gap-2">
@@ -45,6 +76,7 @@ function DemoCard({
         </div>
       </div>
 
+      {/* Content */}
       <div className="p-6">
         <h3 className="font-display text-lg font-bold text-white">{title}</h3>
         <p className="mt-2 text-sm text-white/70">{desc}</p>
@@ -53,21 +85,28 @@ function DemoCard({
   );
 }
 
+
 /* ------------------------- Desktop Infinite ------------------------ */
 
 function EdgeAwareCard({
   title,
   desc,
   href,
+  image,
   containerRef,
   onPauseRequest,
 }: {
   title: string;
   desc: string;
   href: string;
+  image: {
+    desktop: string;
+    mobile: string;
+  };
   containerRef: React.RefObject<HTMLDivElement | null>;
   onPauseRequest: (pause: boolean) => void;
 }) {
+
   const cardRef = useRef<HTMLDivElement | null>(null);
   const [scale, setScale] = useState(1);
 
@@ -119,7 +158,13 @@ function EdgeAwareCard({
     >
       {/* Tamaño grande y responsivo */}
       <div className="w-[clamp(380px,48vw,820px)]">
-        <DemoCard title={title} desc={desc} href={href} />
+        <DemoCard
+          title={title}
+          desc={desc}
+          href={href}
+          image={image}
+        />
+
       </div>
     </motion.div>
   );
@@ -156,9 +201,12 @@ function DesktopInfiniteDemos() {
 
     // loop perfecto: cuando recorres media pista, vuelves a 0
     const halfWidth = track.scrollWidth / 2;
-    if (Math.abs(x.get()) >= halfWidth) {
-      x.set(0);
+    const currentX = x.get();
+
+    if (currentX <= -halfWidth) {
+      x.set(currentX + halfWidth);
     }
+
   });
 
   return (
@@ -173,14 +221,14 @@ function DesktopInfiniteDemos() {
             title={d.title}
             desc={d.desc}
             href={d.href}
+            image={d.image}
             containerRef={containerRef}
             onPauseRequest={(pause) => {
-              // pausa suave: target a 0
-              // Si quieres “pausa premium” (casi quieto): cambia 0 por 18 o 25
               speedTarget.current = pause ? 18 : baseSpeed;
             }}
           />
         ))}
+
       </motion.div>
 
 
@@ -221,7 +269,9 @@ export default function DemosCarousel() {
                   title={items[index].title}
                   desc={items[index].desc}
                   href={items[index].href}
+                  image={items[index].image}
                 />
+
               </motion.div>
             </AnimatePresence>
           </div>

@@ -148,7 +148,7 @@ export default function Navbar() {
               <SheetContent
                 side="right"
                 className={[
-                  "w-[88vw] border-white/10 text-white",
+                  "w-full max-w-[360px] border-white/10 text-white",
                   "bg-[#0b1220]/80 backdrop-blur",
                   "p-0", // control total del layout
                 ].join(" ")}

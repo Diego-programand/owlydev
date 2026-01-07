@@ -26,17 +26,17 @@ export default function Hero() {
       <div className="absolute inset-0 bg-[radial-gradient(900px_circle_at_25%_45%,rgba(26, 35, 37, 0.12),transparent_60%)]" />
 
       {/* ✅ Imagen absoluta: “sale” por la izquierda */}
-      <div className="group absolute left-0 top-1/2 -translate-y-1/2 z-10 hidden md:block
+      <div className="group absolute left-0 top-1/2 -translate-y-1/2 z-10 hidden lg:block
                 pointer-events-auto
                 w-[70vw] h-[70vh]">
         <div
           className={[
             "relative",
             // tamaño responsive (ajusta si quieres)
-            "w-[56vw] max-w-[50vw] min-w-[45vw]",
+            "w-full max-w-[56vw]",
             // ✅ sacar del lateral: se ve aprox 75–80%
-            "-translate-x-[8%]",
-            "-translate-y-[-10%]",
+            "-translate-x-[18%]",
+            "-translate-y-[-16%]",
             // rotación / estética
             "rotate-[-9deg]",
             "origin-center",                  // al frente
