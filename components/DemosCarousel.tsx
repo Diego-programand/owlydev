@@ -164,8 +164,6 @@ function DesktopInfiniteDemos() {
   return (
     <div ref={containerRef} className="relative w-full overflow-hidden pt-4">
       {/* Sombras laterales (efecto entrar/salir) */}
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-28 bg-gradient-to-r from-[#16263a] to-transparent z-10" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-28 bg-gradient-to-l from-[#16263a] to-transparent z-10" />
 
       {/* Track */}
       <motion.div ref={trackRef} style={{ x }} className="flex gap-10 py-6">
