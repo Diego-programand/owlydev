@@ -12,7 +12,7 @@ export const site = {
 export const navItems = [
   { id: "hero", label: "Inicio" },
   { id: "services", label: "Servicios" },
-  { id: "demos", label: "Demos" },
+  { id: "faq", label: "FAQ" },
   { id: "contact", label: "Contacto" },
 ] as const;
 
@@ -61,5 +61,24 @@ export const demos = [
       desktop: "/demos/ecommerce-desktop.webp",
       mobile: "/demos/ecommerce-mobile.webp",
     },
+  },
+] as const;
+
+export const faqs = [
+  {
+    question: "¿Cuánto tiempo toma desarrollar un proyecto?",
+    answer: "Dependiendo de la complejidad, un landing page profesional toma 1-2 semanas, mientras que proyectos más robustos como dashboards o ecommerce pueden tomar 3-6 semanas. Siempre trabajamos con plazos claros y actualizaciones constantes."
+  },
+  {
+    question: "¿Ofrecen soporte después de la entrega?",
+    answer: "Sí. Incluimos 30 días de soporte técnico gratuito post-entrega para ajustes y dudas. Además, ofrecemos planes de mantenimiento mensual para actualizaciones continuas y monitoreo de performance."
+  },
+  {
+    question: "¿Trabajan con startups o solo empresas establecidas?",
+    answer: "Trabajamos con ambos. Entendemos las necesidades de startups en crecimiento y también la escala que requieren empresas consolidadas. Adaptamos nuestros servicios y precios según cada etapa del negocio."
+  },
+  {
+    question: "¿Qué tecnologías utilizan?",
+    answer: "Usamos tecnologías modernas y probadas: React, Next.js, TypeScript para frontend; Node.js, Laravel para backend. Priorizamos performance, SEO y experiencia de usuario en cada stack que elegimos."
   },
 ] as const;

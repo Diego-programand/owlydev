@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Outfit, Plus_Jakarta_Sans } from "next/font/google";
+import { Outfit, Plus_Jakarta_Sans, Roboto } from "next/font/google";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -13,6 +13,14 @@ const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
   variable: "--font-jakarta",
   weight: ["400", "500", "600", "700", "800"],
+  display: "swap",
+});
+
+// 2. Configurar Roboto
+const roboto = Roboto({
+  subsets: ["latin"],
+  variable: "--font-roboto", // Nombre de la variable CSS
+  weight: ["400", "500", "700"], // Pesos recomendados para formalidad
   display: "swap",
 });
 

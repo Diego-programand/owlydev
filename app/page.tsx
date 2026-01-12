@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 
 import Hero from "@/sections/Hero";
 import Services from "@/sections/Services";
-import Demos from "@/sections/Demos";
+import FAQ from "@/sections/FAQ";
 import Contact from "@/sections/Contact";
 
 export default function Page() {
@@ -13,7 +13,7 @@ export default function Page() {
       <Navbar />
       <Hero />
       <Services />
-      <Demos />
+      <FAQ />
       <Contact />
       <Footer />
     </main>
