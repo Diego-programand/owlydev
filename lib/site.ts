@@ -1,6 +1,7 @@
 export const site = {
   name: "OwlyDev",
-  tagline: "Soluciones web con diseño, performance y enfoque real en conversión.",
+  // Frase corta, directa y orientada a resultados
+  tagline: "Desarrollo de alto rendimiento para negocios que no se conforman con 'solo una web'.",
   colors: {
     bg: "#16263a",
     blue: "#0062cc",
@@ -17,46 +18,65 @@ export const navItems = [
 ] as const;
 
 export const services = [
-  { title: "Diseño Web Profesional", desc: "Landing pages y sitios rápidos, claros y pro.", img: "/services/web-pro.webp" },
-  { title: "Bots de Discord", desc: "Bots a medida: moderación, tickets, economía, automatizaciones.", img: "/services/discord-bot.webp" },
-  { title: "Ecommerce", desc: "Tiendas optimizadas para conversión y experiencia.", img: "/services/ecommerce.webp" },
-  { title: "Consultorías UX/UI", desc: "Mejoras prácticas en experiencia, arquitectura y diseño.", img: "/services/ux-ui.webp" },
-  { title: "Imagen Corporativa Digital", desc: "Logo, iconografía, componentes y consistencia visual.", img: "/services/branding.webp" },
+  { 
+    title: "Webs de Alto Impacto", 
+    desc: "Sitios ultrarrápidos diseñados para retener clientes y proyectar autoridad inmediata.", 
+    img: "/services/web-pro.webp" 
+  },
+  { 
+    title: "Automatización & Bots", 
+    desc: "Bots inteligentes que gestionan tu comunidad y ahorran horas de trabajo operativo.", 
+    img: "/services/discord-bot.webp" 
+  },
+  { 
+    title: "Ecommerce de Élite", 
+    desc: "Tiendas online optimizadas con un solo objetivo: que el proceso de compra sea irresistible.", 
+    img: "/services/ecommerce.webp" 
+  },
+  { 
+    title: "Estrategia UX/UI", 
+    desc: "Analizamos el comportamiento de tu usuario para eliminar los obstáculos que te quitan ventas.", 
+    img: "/services/ux-ui.webp" 
+  },
+  { 
+    title: "Identidad Digital", 
+    desc: "Diseño visual coherente que hace que tu marca se vea tan cara como el valor que entregas.", 
+    img: "/services/branding.webp" 
+  },
 ] as const;
-
 
 export const demos = [
   {
-    title: "Discord Dashboard",
+    title: "Ecosistema de Gestión de Comunidades",
     href: "/demos/discord-dashboard",
-    desc: "Dashboard administrativo para la gestión y configuración de un bot de Discord.",
+    desc: "Automatización total de procesos y administración de usuarios. Diseñado para reducir el trabajo operativo y escalar comunidades sin esfuerzo manual.",
     image: {
       desktop: "/demos/discord-desktop.webp",
       mobile: "/demos/discord-mobile.webp",
     },
   },
   {
-    title: "Reservas Dashboard",
+    title: "Sistema Inteligente de Reservas",
     href: "/demos/reservas-dashboard",
-    desc: "Panel administrativo para la gestión de reservas, calendario y estados.",
+    desc: "Panel administrativo de alto rendimiento que elimina el caos de las citas manuales, centralizando calendarios y estados en una interfaz intuitiva.",
     image: {
       desktop: "/demos/dashboard-desktop.webp",
       mobile: "/demos/dashboard-mobile.webp",
     },
   },
   {
-    title: "Landing Page",
+    title: "Landing Page de Alta Conversión",
     href: "/demos/landing-desktop",
-    desc: "Landing page optimizada para conversión y presentación de servicios.",
+    desc: "Estructura optimizada psicológicamente para transformar visitantes en clientes potenciales, priorizando la velocidad de carga y la claridad del mensaje.",
     image: {
       desktop: "/demos/landing-desktop.webp",
       mobile: "/demos/landing-mobile.webp",
     },
   },
   {
-    title: "Ecommerce",
+    title: "Arquitectura Ecommerce Premium",
     href: "/demos/ecommerce",
-    desc: "Demo de tienda online con catálogo de productos y flujo de compra.",
+    desc: "Experiencia de compra fluida y profesional enfocada en maximizar el ticket promedio y reducir el abandono de carrito.",
     image: {
       desktop: "/demos/ecommerce-desktop.webp",
       mobile: "/demos/ecommerce-mobile.webp",
@@ -66,19 +86,19 @@ export const demos = [
 
 export const faqs = [
   {
-    question: "¿Cuánto tiempo toma desarrollar un proyecto?",
-    answer: "Dependiendo de la complejidad, un landing page profesional toma 1-2 semanas, mientras que proyectos más robustos como dashboards o ecommerce pueden tomar 3-6 semanas. Siempre trabajamos con plazos claros y actualizaciones constantes."
+    question: "¿Para qué quiero una web si ya vendo por redes sociales?",
+    answer: "Las redes son terreno alquilado; tu web es tu casa propia. Es el único lugar donde tú tienes el control total de tu marca, aseguras que tus clientes siempre te encuentren y evitas depender de algoritmos que cambian sin aviso."
   },
   {
-    question: "¿Ofrecen soporte después de la entrega?",
-    answer: "Sí. Incluimos 30 días de soporte técnico gratuito post-entrega para ajustes y dudas. Además, ofrecemos planes de mantenimiento mensual para actualizaciones continuas y monitoreo de performance."
+    question: "¿Esto es un gasto o realmente me ayudará a vender más?",
+    answer: "No es un gasto, es un vendedor que no duerme. Diseñamos tu web como un embudo estratégico que guía al visitante de la curiosidad a la compra, convirtiendo tu presencia digital en una máquina constante de generar clientes."
   },
   {
-    question: "¿Trabajan con startups o solo empresas establecidas?",
-    answer: "Trabajamos con ambos. Entendemos las necesidades de startups en crecimiento y también la escala que requieren empresas consolidadas. Adaptamos nuestros servicios y precios según cada etapa del negocio."
+    question: "He visto opciones más baratas, ¿cuál es la diferencia real?",
+    answer: "La diferencia es la rentabilidad. Una web barata que carga lento o no se ve bien en móviles te hace perder dinero cada segundo. Nosotros creamos tecnología de alto rendimiento: rápida, segura y optimizada para que aparezcas primero en Google."
   },
   {
-    question: "¿Qué tecnologías utilizan?",
-    answer: "Usamos tecnologías modernas y probadas: React, Next.js, TypeScript para frontend; Node.js, Laravel para backend. Priorizamos performance, SEO y experiencia de usuario en cada stack que elegimos."
+    question: "¿Me quedaré solo cuando necesite hacer cambios después?",
+    answer: "Nunca. Te entregamos una plataforma fácil de usar para que tengas autonomía en cambios básicos, y cuentas con nuestro soporte experto para lo complejo. Somos tu socio tecnológico, estamos aquí para que tu única preocupación sea ver crecer tu negocio."
   },
 ] as const;
