@@ -1,4 +1,3 @@
-// components/sections/FAQ.tsx
 "use client";
 
 import { faqs } from "@/lib/site";
@@ -27,7 +26,26 @@ export default function FAQ() {
       id="faq"
       className="relative scroll-mt-24 bg-[#0A111A] py-20 md:py-32 overflow-hidden"
     >
-      {/* Video de fondo estático (sin parallax) */}
+      {/* SCRIPT DE METADATA PARA GOOGLE (SEO) */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": faqs.map((faq) => ({
+              "@type": "Question",
+              "name": faq.question,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer
+              }
+            }))
+          })
+        }}
+      />
+
+      {/* Video de fondo estático */}
       <div className="absolute inset-0 w-full h-full">
         <video
           ref={videoRef}
@@ -35,21 +53,21 @@ export default function FAQ() {
           loop
           muted
           playsInline
-          className="w-full h-full object-cover opacity-5"
+          className="w-full h-full object-cover opacity-30"
         >
-          <source src="/DemosBackground.mp4" type="video/mp4" />
+          <source src="/FAQBackground.mp4" type="video/mp4" />
         </video>
       </div>
 
-      {/* Overlays simples */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0A111A] via-[#0A111A]/90 to-[#0A111A]" />
+        {/* Overlays */}
+      <div className="absolute inset-0 bg-[#0b1220]/30 z-0" />
 
-      {/* Orbes de fondo - Estáticos, sin animación */}
+      {/* Orbes de fondo */}
       <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[#23ADCF]/10 rounded-full blur-[150px]" />
       <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-[#0062cc]/10 rounded-full blur-[150px]" />
 
       <div className="relative z-10 mx-auto max-w-5xl px-4">
-        {/* Header minimalista */}
+        {/* Header con enfoque psicológico */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -57,25 +75,26 @@ export default function FAQ() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12 md:mb-16"
         >
-          {/* Badge */}
+          {/* Badge: De "FAQ" a "Claridad Estratégica" */}
           <div className="inline-flex items-center gap-2 rounded-full border border-[#23ADCF]/30 bg-[#23ADCF]/5 px-4 py-1.5 mb-6 backdrop-blur-sm">
             <Sparkles className="w-3 h-3 text-[#23ADCF]" />
             <span className="text-xs font-bold uppercase tracking-wider text-[#23ADCF]">
-              FAQ
+              Claridad total
             </span>
           </div>
 
-          {/* Título */}
+          {/* Título: Enfocado en la toma de decisiones */}
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
-            Preguntas{" "}
+            Despejamos tus{" "}
             <span className="bg-gradient-to-r from-[#23ADCF] to-[#0062cc] bg-clip-text text-transparent">
-              frecuentes
+              dudas críticas
             </span>
           </h2>
 
-          {/* Subtítulo */}
+          {/* Subtítulo: Empatía y reducción de ansiedad */}
           <p className="text-lg text-white/60 max-w-2xl mx-auto">
-            Todo lo que necesitas saber antes de empezar
+            Sabemos que elegir un socio tecnológico es una decisión importante. 
+            Aquí respondemos con total transparencia a lo que nuestros clientes necesitan saber antes de escalar.
           </p>
         </motion.div>
 
@@ -102,7 +121,6 @@ export default function FAQ() {
                       : "border-white/10 bg-[#0A111A]/60"
                   )}
                 >
-                  {/* Barra de acento izquierda */}
                   <div
                     className={cn(
                       "absolute left-0 top-0 bottom-0 w-1 rounded-l-xl transition-all duration-300",
@@ -113,10 +131,8 @@ export default function FAQ() {
                   />
 
                   <div className="p-5 md:p-6">
-                    {/* Header de la pregunta */}
                     <div className="flex items-center justify-between gap-4">
                       <div className="flex items-center gap-3 md:gap-4 flex-1">
-                        {/* Número */}
                         <div
                           className={cn(
                             "flex-shrink-0 w-8 h-8 md:w-10 md:h-10 rounded-lg flex items-center justify-center text-sm md:text-base font-bold transition-all duration-300",
@@ -128,7 +144,6 @@ export default function FAQ() {
                           {index + 1}
                         </div>
 
-                        {/* Pregunta */}
                         <h3
                           className={cn(
                             "font-display text-base md:text-xl font-semibold transition-colors duration-300",
@@ -139,7 +154,6 @@ export default function FAQ() {
                         </h3>
                       </div>
 
-                      {/* Ícono +/- */}
                       <div
                         className={cn(
                           "flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-300",
@@ -156,7 +170,6 @@ export default function FAQ() {
                       </div>
                     </div>
 
-                    {/* Respuesta con animación simple */}
                     <div
                       className={cn(
                         "grid transition-all duration-300 ease-in-out",
@@ -165,10 +178,7 @@ export default function FAQ() {
                     >
                       <div className="overflow-hidden">
                         <div className="pt-4 md:pt-5 pl-11 md:pl-14">
-                          {/* Separador */}
                           <div className="h-px bg-gradient-to-r from-[#23ADCF]/30 to-transparent mb-4" />
-                          
-                          {/* Texto */}
                           <p className="text-sm md:text-base text-white/70 leading-relaxed">
                             {faq.answer}
                           </p>
@@ -182,7 +192,7 @@ export default function FAQ() {
           })}
         </div>
 
-        {/* CTA simple */}
+        {/* CTA: De "Contáctanos" a "Consultoría Estratégica" */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -191,7 +201,7 @@ export default function FAQ() {
           className="mt-12 md:mt-16 text-center"
         >
           <p className="text-white/60 mb-6">
-            ¿Tienes otra pregunta?
+            ¿Tu duda es más específica? Estamos listos para escuchar tu proyecto.
           </p>
 
           <button
@@ -207,7 +217,7 @@ export default function FAQ() {
               "hover:shadow-[0_0_30px_rgba(35,173,207,0.3)]"
             )}
           >
-            Contáctanos
+            Hablar con un especialista
             <span className="transition-transform duration-300 group-hover:translate-x-1">
               →
             </span>

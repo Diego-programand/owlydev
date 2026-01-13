@@ -25,6 +25,28 @@ export default function Hero() {
       id="hero"
       className="relative scroll-mt-24 overflow-hidden min-h-screen flex items-center justify-center bg-[#0A111A]"
     >
+      {/* 1. SCRIPT DE METADATA PARA GOOGLE */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": site.name,
+            "url": "https://tu-dominio.com", // Cambiar!!!
+            "description": "Especialistas en desarrollo de alto rendimiento y estrategias de conversión digital.",
+            "publisher": {
+              "@type": "Organization",
+              "name": "OwlyDev",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://tu-dominio.com/logo.png"
+              }
+            }
+          })
+        }}
+      />
+
       {/* Video de fondo */}
       <video
         ref={videoRef}
@@ -74,6 +96,17 @@ export default function Hero() {
             </p>
           </Reveal>
 
+          <Reveal delay={0.7}>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
+            <button className="px-8 py-4 bg-gradient-to-r from-[#23ADCF] to-[#0062cc] hover:bg-[#0062cc] text-white font-bold rounded-full transition-all transform hover:scale-105 shadow-lg shadow-[#23ADCF]/20">
+              Empezar mi proyecto
+            </button>
+            <button className="px-8 py-4 border border-white/20 hover:bg-white/8 text-white font-medium rounded-full transition-all">
+              Ver casos de éxito
+            </button>
+          </div>
+        </Reveal>
+
           {/* Imagen demo desktop con efecto 3D */}
           <Reveal delay={0.8} direction="scale">
             <div className="hidden md:block mx-auto max-w-5xl mt-12 group [perspective:2000px]">
@@ -89,7 +122,7 @@ export default function Hero() {
                 <div className="relative aspect-video w-full">
                   <Image
                     src="/HeroLandingPage.png"
-                    alt="Demo OwlyDev"
+                    alt="Dashboard de administración desarrollado por OwlyDev"
                     fill
                     priority
                     className="object-cover object-top"
@@ -121,24 +154,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Imagen demo mobile */}
-      <Reveal delay={0.8} direction="up">
-        <div className="md:hidden absolute bottom-0 left-0 right-0 z-[3] px-4 pb-8">
-          <div className="relative overflow-hidden rounded-xl border border-white/10 bg-white/5 shadow-[0_20px_60px_rgba(0,0,0,0.6)]">
-            <div className="relative aspect-video w-full">
-              <Image
-                src="/HeroPageDemo.webp"
-                alt="Demo OwlyDev"
-                fill
-                priority
-                className="object-cover object-top"
-                sizes="100vw"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0b1220]/60 via-transparent to-transparent" />
-            </div>
-          </div>
-        </div>
-      </Reveal>
     </section>
   );
 }
