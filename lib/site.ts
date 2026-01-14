@@ -18,30 +18,35 @@ export const navItems = [
 ] as const;
 
 export const services = [
-  { 
-    title: "Webs de Alto Impacto", 
-    desc: "Sitios ultrarrápidos diseñados para retener clientes y proyectar autoridad inmediata.", 
-    img: "/services/web-pro.webp" 
+  {
+    title: "Webs de Alto Impacto",
+    desc: "Sitios ultrarrápidos diseñados para retener clientes y proyectar autoridad inmediata.",
+    img: "/services/web-pro.webp",
+    href: "/demos/landing-page"
   },
-  { 
-    title: "Automatización & Bots", 
-    desc: "Bots inteligentes que gestionan tu comunidad y ahorran horas de trabajo operativo.", 
-    img: "/services/discord-bot.webp" 
+  {
+    title: "Automatización & Bots",
+    desc: "Bots inteligentes que gestionan tu comunidad y ahorran horas de trabajo operativo.",
+    img: "/services/discord-bot.webp",
+    href: "/demos/discord-dashboard"
   },
-  { 
-    title: "Ecommerce de Élite", 
-    desc: "Tiendas online optimizadas con un solo objetivo: que el proceso de compra sea irresistible.", 
-    img: "/services/ecommerce.webp" 
+  {
+    title: "Ecommerce de Élite",
+    desc: "Tiendas online optimizadas con un solo objetivo: que el proceso de compra sea irresistible.",
+    img: "/services/ecommerce.webp",
+    href: "/demos/ecommerce"
   },
-  { 
-    title: "Estrategia UX/UI", 
-    desc: "Analizamos el comportamiento de tu usuario para eliminar los obstáculos que te quitan ventas.", 
-    img: "/services/ux-ui.webp" 
+  {
+    title: "Estrategia UX/UI",
+    desc: "Analizamos el comportamiento de tu usuario para eliminar los obstáculos que te quitan ventas.",
+    img: "/services/ux-ui.webp",
+    href: "/demos/estrategia-ux-ui"
   },
-  { 
-    title: "Identidad Digital", 
-    desc: "Diseño visual coherente que hace que tu marca se vea tan cara como el valor que entregas.", 
-    img: "/services/branding.webp" 
+  {
+    title: "Identidad Digital",
+    desc: "Diseño visual coherente que hace que tu marca se vea tan cara como el valor que entregas.",
+    img: "/services/branding.webp",
+    href: "/#contact"
   },
 ] as const;
 
