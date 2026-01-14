@@ -60,7 +60,7 @@ export default function Hero() {
       </video>
 
       {/* Overlays */}
-      <div className="absolute inset-0 bg-[#0b1220]/70 backdrop-blur-[2px] z-[1]" />
+      <div className="absolute inset-0 bg-[#0b1220]/70 backdrop-blur-[4px] z-[1]" />
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0b1220]/40 to-[#0b1220]/90 z-[2]" />
 
       {/* Contenido centrado */}
