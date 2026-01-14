@@ -66,6 +66,7 @@ export default function Services() {
                 title={service.title}
                 desc={service.desc}
                 img={service.img}
+                href={service.href}
                 index={index}
               />
             ))}

@@ -56,7 +56,7 @@ export default function Hero() {
         playsInline
         className="hero-video-bg"
       >
-        <source src="/HeroBackground.mp4" type="video/mp4" />
+        <source src="videos/HeroBackground.mp4" type="video/mp4" />
       </video>
 
       {/* Overlays */}

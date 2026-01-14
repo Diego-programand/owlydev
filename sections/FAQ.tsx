@@ -55,7 +55,7 @@ export default function FAQ() {
           playsInline
           className="w-full h-full object-cover opacity-30"
         >
-          <source src="/FAQBackground.mp4" type="video/mp4" />
+          <source src="videos/FAQBackground.mp4" type="video/mp4" />
         </video>
       </div>
 
