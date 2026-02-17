@@ -6,26 +6,7 @@ import { cn } from "@/lib/utils";
 import { navItems } from "@/lib/site";
 import { SmoothLink } from "@/components/ui/smooth-link";
 
-const socialLinks = [
-  {
-    icon: Instagram,
-    href: "#",
-    label: "Instagram",
-    gradient: "from-[#833AB4] via-[#E1306C] to-[#FD1D1D]"
-  },
-  {
-    icon: Music2,
-    href: "#",
-    label: "TikTok",
-    gradient: "from-[#00F2EA] to-[#FF0050]"
-  },
-  {
-    icon: MessageCircle,
-    href: "https://wa.me/tu-numero",
-    label: "WhatsApp",
-    gradient: "from-[#25D366] to-[#128C7E]"
-  }
-];
+
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -128,22 +109,18 @@ export default function Footer() {
                 </div>
               </a>
 
-              <div className="flex gap-4">
-                {socialLinks.map((social) => (
-                  <motion.a
-                    key={social.label}
-                    href={social.href}
-                    whileTap={{ scale: 0.9 }}
-                    className="group relative w-12 h-12 rounded-2xl border border-white/10 bg-white/5 flex items-center justify-center overflow-hidden"
-                  >
-                    <div className={cn(
-                      "absolute inset-0 opacity-0 group-active:opacity-20 transition-opacity",
-                      `bg-gradient-to-br ${social.gradient}`
-                    )} />
-                    <social.icon className="w-5 h-5 text-white/50 group-hover:text-white transition-colors relative z-10" />
-                  </motion.a>
-                ))}
-              </div>
+              <a
+                href="https://tiktok.com/@owlydev"
+                className="group flex items-center gap-4 p-4 rounded-2xl border border-white/5 bg-white/[0.02] active:scale-[0.98] transition-all"
+              >
+                <div className="shrink-0 w-10 h-10 rounded-xl bg-[#23ADCF]/10 flex items-center justify-center group-hover:bg-[#23ADCF]/20">
+                  <Music2 className="w-5 h-5 text-[#23ADCF]" />
+                </div>
+                <div className="min-w-0">
+                  <p className="text-[9px] uppercase text-white/40 font-black tracking-wider">TikTok</p>
+                  <p className="text-sm text-white/80 truncate font-medium">@owlydev</p>
+                </div>
+              </a>
             </div>
           </div>
         </div>

@@ -13,7 +13,7 @@ export default function FAQ() {
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.playbackRate = 0.5;
-      videoRef.current.play().catch(() => {});
+      videoRef.current.play().catch(() => { });
     }
   }, []);
 
@@ -59,12 +59,8 @@ export default function FAQ() {
         </video>
       </div>
 
-        {/* Overlays */}
+      {/* Overlays */}
       <div className="absolute inset-0 bg-[#0b1220]/30 z-0" />
-
-      {/* Orbes de fondo */}
-      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[#23ADCF]/10 rounded-full blur-[150px]" />
-      <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-[#0062cc]/10 rounded-full blur-[150px]" />
 
       <div className="relative z-10 mx-auto max-w-5xl px-4">
         {/* Header con enfoque psicológico */}
@@ -93,7 +89,7 @@ export default function FAQ() {
 
           {/* Subtítulo: Empatía y reducción de ansiedad */}
           <p className="text-lg text-white/60 max-w-2xl mx-auto">
-            Sabemos que elegir un socio tecnológico es una decisión importante. 
+            Sabemos que elegir un socio tecnológico es una decisión importante.
             Aquí respondemos con total transparencia a lo que nuestros clientes necesitan saber antes de escalar.
           </p>
         </motion.div>
@@ -115,29 +111,22 @@ export default function FAQ() {
                   onClick={() => toggleFAQ(index)}
                   className={cn(
                     "group relative w-full text-left rounded-xl border backdrop-blur-xl transition-all duration-300",
-                    "hover:border-[#23ADCF]/40",
+                    "hover:border-[#0062cc]/40 hover:bg-[#0062cc]/5",
                     isOpen
-                      ? "border-[#23ADCF]/40 bg-[#23ADCF]/5 shadow-[0_8px_32px_rgba(35,173,207,0.15)]"
+                      ? "border-[#0062cc]/40 bg-[#0062cc]/5 shadow-[0_8px_32px_rgba(35,173,207,0.15)]"
                       : "border-white/10 bg-[#0A111A]/60"
                   )}
                 >
-                  <div
-                    className={cn(
-                      "absolute left-0 top-0 bottom-0 w-1 rounded-l-xl transition-all duration-300",
-                      isOpen
-                        ? "bg-gradient-to-b from-[#23ADCF] to-[#0062cc]"
-                        : "bg-transparent group-hover:bg-[#23ADCF]/30"
-                    )}
-                  />
+
 
                   <div className="p-5 md:p-6">
                     <div className="flex items-center justify-between gap-4">
                       <div className="flex items-center gap-3 md:gap-4 flex-1">
                         <div
                           className={cn(
-                            "flex-shrink-0 w-8 h-8 md:w-10 md:h-10 rounded-lg flex items-center justify-center text-sm md:text-base font-bold transition-all duration-300",
+                            "flex-shrink-0 w-8 h-8 md:w-10 md:h-10 rounded-lg flex items-center justify-center text-sm md:text-base font-bold transition-all duration-300 group-hover:text-[#23ADCF]",
                             isOpen
-                              ? "bg-gradient-to-br from-[#23ADCF] to-[#0062cc] text-white"
+                              ? "bg-gradient-to-br from-[#0062cc] to-[#23ADCF] text-white group-hover:text-white"
                               : "bg-white/5 text-white/50 group-hover:bg-white/10"
                           )}
                         >
@@ -147,7 +136,7 @@ export default function FAQ() {
                         <h3
                           className={cn(
                             "font-display text-base md:text-xl font-semibold transition-colors duration-300",
-                            isOpen ? "text-white" : "text-white/90"
+                            isOpen ? "text-white" : "text-white/80"
                           )}
                         >
                           {faq.question}
@@ -156,9 +145,9 @@ export default function FAQ() {
 
                       <div
                         className={cn(
-                          "flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-300",
+                          "flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-300 group-hover:text-[#23ADCF]",
                           isOpen
-                            ? "bg-[#23ADCF]/20 text-[#23ADCF] rotate-180"
+                            ? "bg-[#23ADCF]/20 text-[#23ADCF] rotate-180 group-hover:text-white"
                             : "bg-white/5 text-white/60 group-hover:bg-white/10"
                         )}
                       >
@@ -210,11 +199,12 @@ export default function FAQ() {
             }
             className={cn(
               "group inline-flex items-center gap-2 rounded-full px-8 py-3",
-              "border border-[#23ADCF]/30 bg-[#23ADCF]/5",
+              "border border-[#0062cc]/30 bg-[#0062cc]/5",
               "text-white font-medium backdrop-blur-sm",
               "transition-all duration-300",
-              "hover:border-[#23ADCF]/50 hover:bg-[#23ADCF]/10",
-              "hover:shadow-[0_0_30px_rgba(35,173,207,0.3)]"
+              "hover:border-[#0062cc]/50 hover:bg-[#0062cc]/10",
+              "hover:shadow-[0_0_30px_rgba(0,98,204,0.3)]",
+              "hover:scale-105"
             )}
           >
             Hablar con un especialista

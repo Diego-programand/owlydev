@@ -1,159 +1,123 @@
-// components/sections/Hero.tsx
 "use client";
 
-import Image from "next/image";
-import { site } from "@/lib/site";
-import { useEffect, useRef } from "react";
-import { cn } from "@/lib/utils";
-import { Reveal } from "@/components/ui/reveal";
+import { Suspense, lazy } from "react";
 import { motion } from "framer-motion";
+import { site } from "@/lib/site";
+import { cn } from "@/lib/utils";
+import { ArrowRight, Sparkles, Zap, Clock, Shield } from "lucide-react";
+
+const AnimatedBackground = lazy(() => import("@/components/ui/animated-background"));
+
+const trustMetrics = [
+  { icon: Zap, value: "< 1s", label: "Carga", color: "#BDE8F5" },
+  { icon: Clock, value: "2-3 sem", label: "Entrega", color: "#4988C4" },
+  { icon: Shield, value: "100%", label: "Garantía", color: "#BDE8F5" },
+];
 
 export default function Hero() {
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.playbackRate = 0.7;
-      videoRef.current.play().catch((error) => {
-        console.log("Autoplay prevented:", error);
-      });
-    }
-  }, []);
+  const scrollToId = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <section
       id="hero"
-      className="relative scroll-mt-24 overflow-hidden min-h-screen flex items-center justify-center bg-[#0A111A]"
+      // CAMBIO: pt-36 para dar aire superior y pb-24 para separar del indicador inferior
+      className="relative flex min-h-[100dvh] items-center justify-center overflow-hidden bg-[#0A0F1C] px-4 pt-36 pb-24 md:pt-24"
     >
-      {/* 1. SCRIPT DE METADATA PARA GOOGLE */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "WebSite",
-            "name": site.name,
-            "url": "https://tu-dominio.com", // Cambiar!!!
-            "description": "Especialistas en desarrollo de alto rendimiento y estrategias de conversión digital.",
-            "publisher": {
-              "@type": "Organization",
-              "name": "OwlyDev",
-              "logo": {
-                "@type": "ImageObject",
-                "url": "https://tu-dominio.com/logo.png"
-              }
-            }
-          })
-        }}
-      />
+      {/* Background & Effects */}
+      <Suspense fallback={<div className="absolute inset-0 bg-[#0A0F1C]" />}>
+        <AnimatedBackground />
+      </Suspense>
 
-      {/* Video de fondo */}
-      <video
-        ref={videoRef}
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="hero-video-bg"
-      >
-        <source src="videos/HeroBackground.mp4" type="video/mp4" />
-      </video>
+      <div className="relative z-20 w-full max-w-5xl mx-auto">
+        <div className="flex flex-col items-center space-y-6 text-center md:space-y-8">
 
-      {/* Overlays */}
-      <div className="absolute inset-0 bg-[#0b1220]/70 backdrop-blur-[4px] z-[1]" />
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0b1220]/40 to-[#0b1220]/90 z-[2]" />
+          {/* Badge de Social Proof */}
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="inline-flex items-center gap-2 rounded-full border border-[#BDE8F5]/30 bg-[#BDE8F5]/5 px-4 py-2 backdrop-blur-sm"
+          >
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#BDE8F5] opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-[#BDE8F5]" />
+            </span>
+            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#BDE8F5]">
+              +47 proyectos entregados en 2025
+            </span>
+          </motion.div>
 
-      {/* Contenido centrado */}
-      <div className="relative z-10 w-full px-4 py-16 md:py-24">
-        <div className="mx-auto max-w-5xl space-y-8 md:space-y-10 text-center">
-          {/* Badge con animación inicial */}
-          <Reveal delay={0.4} direction="down">
-            <div className="flex justify-center mb-0">
-              <p className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm text-white/80 backdrop-blur-sm">
-                <span className="h-2 w-2 rounded-full bg-[#23ADCF] animate-pulse" />
-                {site.name}
-              </p>
-            </div>
-          </Reveal>
-
-          {/* Título principal con reveal */}
-          <Reveal delay={0.4}>
-            <h1 className="font-display text-4xl font-bold leading-tight text-white md:text-6xl lg:text-7xl mx-auto">
-              Transformamos ideas en{" "}
+          {/* Headline */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+          >
+            <h1 className="font-display text-4xl font-bold leading-[1.1] text-white sm:text-5xl lg:text-6xl">
+              Desarrollo de <span className="text-[#23ADCF]">Sitios Web</span> que <br className="hidden sm:block" />
               <span className="bg-gradient-to-r from-[#23ADCF] to-[#0062cc] bg-clip-text text-transparent">
-                experiencias digitales
-              </span>{" "}
-              que convierten
+                venden mientras duermes
+              </span>
             </h1>
-          </Reveal>
+          </motion.div>
 
-          {/* Subtítulo */}
-          <Reveal delay={0.6}>
-            <p className="mx-auto max-w-2xl text-lg leading-relaxed text-white/70 md:text-xl">
-              Diseño moderno, código limpio y enfoque real en resultados.
-              <br className="hidden md:block" />
-              Construimos tu presencia digital con visión a largo plazo.
-            </p>
-          </Reveal>
+          {/* Subheadline */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="max-w-2xl font-jakarta text-base text-white/60 md:text-xl leading-relaxed"
+          >
+            Sin procesos largos. Sin estafas. Solo resultados medibles en 30 días. Desarrollo de alto rendimiento con garantía de velocidad.
+          </motion.p>
 
-          <Reveal delay={0.7}>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
-            <button className="px-8 py-4 bg-gradient-to-r from-[#23ADCF] to-[#0062cc] hover:bg-[#0062cc] text-white font-bold rounded-full transition-all transform hover:scale-105 shadow-lg shadow-[#23ADCF]/20">
-              Empezar mi proyecto
+          {/* Botones */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="flex w-full flex-col items-center justify-center gap-4 sm:flex-row"
+          >
+            <button
+              onClick={() => scrollToId("portfolio")}
+              className="group relative flex w-full items-center justify-center gap-3 overflow-hidden rounded-2xl bg-gradient-to-r from-[#23ADCF] to-[#0062cc] px-8 py-4 font-bold text-white shadow-xl transition-all hover:scale-[1.02] active:scale-95 sm:w-auto"
+            >
+              Ver casos reales
+              <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
             </button>
-            <button className="px-8 py-4 border border-white/20 hover:bg-white/8 text-white font-medium rounded-full transition-all">
-              Ver casos de éxito
+
+            <button
+              onClick={() => scrollToId("contact")}
+              className="flex w-full items-center justify-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-8 py-4 font-bold text-white backdrop-blur-md transition-all hover:bg-white/10 active:scale-95 sm:w-auto"
+            >
+              <Sparkles className="h-5 w-5 text-[#BDE8F5]" />
+              Auditoría gratis
             </button>
-          </div>
-        </Reveal>
-
-          {/* Imagen demo desktop con efecto 3D */}
-          <Reveal delay={0.8} direction="scale">
-            <div className="hidden md:block mx-auto max-w-5xl mt-12 group [perspective:2000px]">
-              <div className={cn(
-                "relative overflow-hidden rounded-2xl border border-white/10 bg-white/5",
-                "transition-all duration-700 ease-out",
-                "shadow-[0_30px_90px_rgba(0,0,0,0.6)] [transform:rotateX(15deg)_rotateY(-0deg)_translateZ(0)]",
-                "group-hover:[transform:rotateX(2deg)_rotateY(0deg)_translateZ(50px)] group-hover:shadow-[0_50px_120px_rgba(24,46,120,0.25)]"
-              )}>
-                <div className="absolute -inset-10 -z-10 rounded-[48px] bg-[radial-gradient(closest-side,rgba(35,173,207,0.15),transparent_70%)] blur-3xl" />
-                <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(800px_circle_at_50%_0%,rgba(255,255,255,0.08),transparent_60%)]" />
-
-                <div className="relative aspect-video w-full">
-                  <Image
-                    src="/HeroLandingPage.png"
-                    alt="Dashboard de administración desarrollado por OwlyDev"
-                    fill
-                    priority
-                    className="object-cover object-top"
-                    sizes="(min-width: 1024px) 1000px, 90vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0b1220]/50 via-transparent to-transparent" />
-                </div>
-              </div>
-            </div>
-          </Reveal>
-
-          {/* Features badge con stagger */}
-          <Reveal delay={1}>
-            <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-white/60 pt-6">
-              {["Performance", "UX/UI", "Conversión"].map((feature, i) => (
-                <motion.div
-                  key={feature}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 1 + i * 0.1, duration: 0.4 }}
-                  className="flex items-center gap-2"
-                >
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#23ADCF]" />
-                  <span>{feature}</span>
-                </motion.div>
-              ))}
-            </div>
-          </Reveal>
+          </motion.div>
         </div>
       </div>
 
+      {/* Scroll indicator - Z-30 y ajustado para no chocar con las tarjetas */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2, duration: 1 }}
+        // CAMBIO: bottom-6 para dar más espacio y sm:block para tu ancho de 639px
+        className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 sm:block z-30 pointer-events-none"
+      >
+        <div className="flex flex-col items-center gap-2">
+          <span className="text-[9px] font-bold uppercase tracking-[0.3em] text-white/20">Descubre</span>
+          <div className="flex h-7 w-4 justify-center rounded-full border border-white/10 p-1 bg-[#0A0F1C]/50 backdrop-blur-md">
+            <motion.div
+              animate={{ y: [0, 10, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              className="h-1 w-1 rounded-full bg-[#BDE8F5]"
+            />
+          </div>
+        </div>
+      </motion.div>
     </section>
   );
 }

@@ -2,14 +2,10 @@
 
 import { useEffect, useMemo, useState } from "react";
 
-/**
- * Detecta la sección activa usando IntersectionObserver.
- * sectionIds: ids de las secciones (ej: ["hero","services","demos","contact"])
- * offsetPx: altura aprox del navbar para que el cálculo sea correcto
- */
-export function useActiveSection(sectionIds: string[], offsetPx = 96) {
+export function useActiveSection(sectionIds: string[], offsetPx = 100) {
   const [active, setActive] = useState(sectionIds[0] ?? "hero");
 
+  // Memorizamos los IDs para evitar re-suscripciones innecesarias
   const ids = useMemo(() => sectionIds, [sectionIds]);
 
   useEffect(() => {
@@ -21,21 +17,19 @@ export function useActiveSection(sectionIds: string[], offsetPx = 96) {
 
     const observer = new IntersectionObserver(
       (entries) => {
-        // Entre las visibles, elige la de mayor ratio
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort(
-            (a, b) => (b.intersectionRatio ?? 0) - (a.intersectionRatio ?? 0)
-          );
-
-        const top = visible[0]?.target as HTMLElement | undefined;
-        if (top?.id) setActive(top.id);
+        entries.forEach((entry) => {
+          // Si la sección está cruzando el margen superior (rootMargin)
+          if (entry.isIntersecting) {
+            setActive(entry.target.id);
+          }
+        });
       },
       {
         root: null,
-        threshold: [0.2, 0.35, 0.5, 0.65],
-        // arriba restamos el alto del navbar; abajo recortamos para evitar saltos raros
-        rootMargin: `-${offsetPx}px 0px -55% 0px`,
+        // Threshold en 0 para que detecte apenas toque el margen
+        threshold: 0,
+        // IMPORTANTE: Detectamos cuando la sección entra en el 25% superior de la pantalla
+        rootMargin: `-${offsetPx}px 0px -75% 0px`,
       }
     );
 
