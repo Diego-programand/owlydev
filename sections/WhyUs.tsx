@@ -55,7 +55,7 @@ export default function WhyUs() {
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
-                        className="lg:col-span-2 p-6 rounded-2xl border border-white/5 bg-white/[0.02] backdrop-blur-sm hover:border-[#AD2405] hover:bg-[#AD2405]/10 transition-all"
+                        className="lg:col-span-2 p-6 xs:p-3 mb-5 rounded-2xl border border-white/5 bg-white/[0.02] backdrop-blur-sm hover:border-[#AD2405] hover:bg-[#AD2405]/10 transition-all "
                     >
                         <p className="text-[#AD2405]/80 font-bold text-sm mb-6 uppercase tracking-wider">El estándar del mercado</p>
                         <ul className="space-y-4">
