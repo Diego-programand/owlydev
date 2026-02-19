@@ -10,6 +10,7 @@ interface Project {
     metric: string;
     category: string;
     image: string;
+    link: string;
     icon: React.ReactNode;
 }
 
@@ -20,6 +21,7 @@ const projects: Project[] = [
         metric: "Arquitectura optimizada para carga instantánea y confianza industrial.",
         category: "Corporate Web",
         image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=1600&auto=format&fit=crop",
+        link: "https://grupoleovoltaje.com/",
         icon: <Cpu className="w-5 h-5" />,
     },
     {
@@ -27,7 +29,8 @@ const projects: Project[] = [
         subtitle: "Landing page premium con enfoque en venta de anchetas personalizadas y desayunos sorpresa.",
         metric: "Interfaz mobile-first diseñada para convertir scroll en ventas.",
         category: "Landing Page",
-        image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1600&auto=format&fit=crop",
+        image: "https://creacionesvane.com/_next/image?url=%2Fcategorias%2Fanchetas.webp&w=3840&q=75",
+        link: "https://creacionesvane.com/",
         icon: <ShoppingBag className="w-5 h-5" />,
     },
     {
@@ -35,7 +38,8 @@ const projects: Project[] = [
         subtitle: "Sistema de gestión interna y control de inventario para empresa de alquiler de mobiliario.",
         metric: "Reducción crítica de errores en reservaciones y control total de stock.",
         category: "Custom Software",
-        image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=1600&auto=format&fit=crop",
+        image: "https://lh3.googleusercontent.com/gps-cs-s/AHVAweoV1MH9qDYAe6nZnsiGknOL24hIuj458Xw_j80wr4LVoY3Ni6o0enGoHiSCA8XgRiLnSvxNdt9_8AGGhsiTuES_HE3XsFzrYI-dXhP0idJxzrPkBg0iBad1gigAy8gJT716IBMsB6qMNk0=s680-w680-h510-rw",
+        link: "https://owlydev.vercel.app/",
         icon: <LayoutDashboard className="w-5 h-5" />,
     },
 ];
@@ -70,7 +74,7 @@ export default function Portfolio() {
                             whileInView={{ opacity: 1 }}
                             className="text-[#23ADCF]  font-jakarta text-[10px] font-bold uppercase tracking-[0.4em] block mb-4"
                         >
-                            Casos de Éxito
+                            Casos de Éxito Destacados
                         </motion.span>
                         <motion.h2
                             initial={{ opacity: 0, y: 20 }}
@@ -126,7 +130,7 @@ export default function Portfolio() {
                                 <h3 className="text-2xl font-display font-bold text-white mb-3">
                                     {project.title}
                                 </h3>
-                                <p className="text-sm text-white/50 font-jakarta mb-6 leading-relaxed">
+                                <p className="text-sm text-white/60 font-jakarta mb-6 leading-relaxed">
                                     {project.subtitle}
                                 </p>
 
@@ -135,12 +139,12 @@ export default function Portfolio() {
                                     <div className="w-8 h-8 rounded-lg bg-[#BDE8F5]/10 flex items-center justify-center shrink-0">
                                         <TrendingUp className="w-4 h-4 text-white group-hover:text-[#0062cc] transition-colors duration-500" />
                                     </div>
-                                    <p className="text-[11px] font-medium text-white/70 leading-snug">
+                                    <p className="text-[12px] font-medium text-white/70 leading-snug">
                                         {project.metric}
                                     </p>
                                 </div>
 
-                                <button className="mt-8 flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-white/20 group-hover:text-white group-hover:underline group-hover:underline-offset-4 transition-all duration-500 group-hover:cursor-pointer hover:text-[#0062cc] hover:underline group-hover:text-[12px]">
+                                <button onClick={() => window.open(project.link, "_blank")} className="mt-8 flex items-center gap-2 text-[13px] font-bold uppercase tracking-widest text-white/60 group-hover:text-white group-hover:underline group-hover:underline-offset-4 transition-all duration-500 group-hover:cursor-pointer hover:text-[#0062cc] hover:underline group-hover:text-[12px]">
                                     Analizar Caso
                                     <ArrowUpRight className="w-3 h-3 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
                                 </button>

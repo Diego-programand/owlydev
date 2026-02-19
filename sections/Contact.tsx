@@ -21,13 +21,41 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("submitting");
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    setStatus("success");
-    setTimeout(() => {
+
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/owlydev.team@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          interests: selectedInterests.join(", "),
+          _subject: `Nuevo Lead: ${formData.name}`,
+          _template: "box", // Opciones: "table" (tabla de datos), "basic" (texto plano), "box" (diseño tarjeta)
+          _captcha: "false",
+        }),
+      });
+
+      if (response.ok) {
+        setStatus("success");
+        setTimeout(() => {
+          setStatus("idle");
+          setFormData({ name: "", email: "", message: "" });
+          setSelectedInterests([]);
+        }, 4000);
+      } else {
+        console.error("Error sending email");
+        setStatus("idle");
+        // Optional: Handle error state in UI
+      }
+    } catch (error) {
+      console.error("Error:", error);
       setStatus("idle");
-      setFormData({ name: "", email: "", message: "" });
-      setSelectedInterests([]);
-    }, 4000);
+    }
   };
 
   return (
@@ -72,8 +100,8 @@ export default function Contact() {
 
             {/* Social Social */}
             <div className="pt-8 border-t border-white/5">
-              <p className="text-[10px] font-bold text-white/30 uppercase tracking-[0.3em] mb-4">Contacto Directo</p>
-              <a href="mailto:owlydev.team@gmail.com" className="text-white/60 hover:text-[#4988C4] transition-colors font-jakarta text-sm">
+              <p className="text-[10px] font-bold text-white/50 uppercase tracking-[0.3em] mb-4">Contacto Directo</p>
+              <a href="mailto:owlydev.team@gmail.com" className="text-white/70 hover:text-[#4988C4] transition-colors font-jakarta text-sm">
                 owlydev.team@gmail.com
               </a>
             </div>

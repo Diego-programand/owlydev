@@ -67,7 +67,7 @@ export default function Navbar() {
         className={cn(
           "fixed inset-x-0 top-0 z-[60] transition-all duration-300",
           scrolled || mobileMenuOpen
-            ? "py-3 bg-[#030712]/90 backdrop-blur-xl border-b border-white/5"
+            ? "py-3 bg-[#030712]/80 backdrop-blur-xl border-b border-white/5"
             : "py-5 bg-transparent border-b border-transparent"
         )}
       >
@@ -76,12 +76,12 @@ export default function Navbar() {
 
             {/* LOGOTIPO OWLYDEV */}
             <motion.button
-              onClick={() => scrollToId("hero")}
+              onClick={() => { setMobileMenuOpen(false); scrollToId("hero"); }}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="flex items-center gap-2.5 group z-[70]"
+              className="flex items-center gap-2.5 group relative z-[70]"
             >
-              <div className="relative w-7 h-9 md:w-8 md:h-10 flex items-center justify-center">
+              <div className="relative w-8 h-10 flex items-center justify-center">
                 <Image
                   src="/IsoTipoOwlyDev.webp"
                   alt="Logo OwlyDev"
@@ -91,14 +91,14 @@ export default function Navbar() {
                   priority
                 />
               </div>
-              <span className="font-display text-base md:text-lg font-bold">
+              <span className="font-display text-lg font-bold">
                 <span className="text-white">Owly</span>
                 <span className="bg-gradient-to-r from-[#23ADCF] to-[#0062cc] bg-clip-text text-transparent">Dev</span>
               </span>
             </motion.button>
 
-            {/* NAV DESKTOP: FOCO EN SECCIÓN ACTIVA */}
-            <nav className="relative hidden md:flex items-center gap-1 p-1 rounded-xl bg-white/5 border border-white/5">
+            {/* NAV DESKTOP (LG+): FOCO EN SECCIÓN ACTIVA */}
+            <nav className="relative hidden lg:flex items-center gap-1 p-1 rounded-xl bg-white/5 border border-white/5">
               {navItems
                 .filter((item) => item.id !== "contact")
                 .map((item) => {
@@ -109,10 +109,10 @@ export default function Navbar() {
                       ref={(node) => { itemRefs.current[item.id] = node; }}
                       onClick={() => scrollToId(item.id)}
                       className={cn(
-                        "relative px-4 py-2 text-[10px] uppercase tracking-widest transition-all duration-500 z-10",
+                        "relative px-5 py-2.5 text-[11px] uppercase tracking-widest transition-all duration-500 z-10 flex items-center h-full",
                         isActive
                           ? "text-white font-black scale-105"
-                          : "text-white/20 font-bold hover:text-white/50"
+                          : "text-white/40 font-bold hover:text-white"
                       )}
                     >
                       {item.label}
@@ -137,62 +137,109 @@ export default function Navbar() {
                 onClick={() => scrollToId("contact")}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="hidden md:inline-flex px-6 py-2 rounded-xl bg-gradient-to-r from-[#23ADCF] to-[#0062cc] text-white text-[11px] font-black uppercase tracking-widest shadow-lg shadow-[#23ADCF]/20"
+                className="hidden lg:inline-flex px-6 py-2.5 rounded-xl bg-gradient-to-r from-[#23ADCF] to-[#0062cc] text-white text-[11px] font-black uppercase tracking-widest shadow-lg shadow-[#23ADCF]/20 hover:shadow-[#23ADCF]/40 transition-shadow"
               >
                 Contacto
               </motion.button>
 
+              {/* Toggle Menu Mobile (Visible < LG) */}
               <motion.button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 whileTap={{ scale: 0.95 }}
-                className="md:hidden h-10 px-3 rounded-xl flex items-center gap-2 border bg-white/5 border-white/10 z-[70]"
+                className="lg:hidden relative z-[70] px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-colors flex items-center gap-2"
               >
                 <span className="text-[10px] font-black uppercase tracking-[0.15em] text-white/90">
                   {mobileMenuOpen ? "Cerrar" : "Menú"}
                 </span>
-                {mobileMenuOpen ? <X className="w-4 h-4 text-white" /> : <Menu className="w-4 h-4 text-white" />}
+                <AnimatePresence mode="wait">
+                  {mobileMenuOpen ? (
+                    <motion.div
+                      key="close"
+                      initial={{ rotate: -90, opacity: 0 }}
+                      animate={{ rotate: 0, opacity: 1 }}
+                      exit={{ rotate: 90, opacity: 0 }}
+                    >
+                      <X className="w-4 h-4" />
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      key="menu"
+                      initial={{ rotate: 90, opacity: 0 }}
+                      animate={{ rotate: 0, opacity: 1 }}
+                      exit={{ rotate: -90, opacity: 0 }}
+                    >
+                      <Menu className="w-5 h-5" />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </motion.button>
             </div>
           </div>
         </div>
       </motion.header>
 
-      {/* MENU MÓVIL: SECCIÓN ACTIVA GIGANTE */}
+      {/* MENU MÓVIL: FULL SCREEN PREMIUM OVERLAY */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed inset-0 z-[55] bg-[#030712] flex flex-col pt-32 px-8 md:hidden"
+            initial={{ opacity: 0, clipPath: "circle(0% at 100% 0%)" }}
+            animate={{ opacity: 1, clipPath: "circle(150% at 100% 0%)" }}
+            exit={{ opacity: 0, clipPath: "circle(0% at 100% 0%)" }}
+            transition={{ type: "spring", damping: 25, stiffness: 100 }}
+            className="fixed inset-0 z-[65] bg-[#030712] lg:hidden flex flex-col justify-center items-center h-[100dvh]"
           >
-            <nav className="flex flex-col gap-2">
+            {/* Background Gradients */}
+            <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-[#23ADCF]/20 rounded-full blur-[100px] pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-[#0062cc]/20 rounded-full blur-[100px] pointer-events-none" />
+
+            <nav className="relative z-10 flex flex-col gap-6 w-full max-w-xs px-6">
               {navItems.map((item, index) => {
                 const isActive = active === item.id;
                 return (
                   <motion.button
                     key={item.id}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.05 }}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.1 + index * 0.1, type: "spring", stiffness: 300, damping: 20 }}
                     onClick={() => { setMobileMenuOpen(false); setTimeout(() => scrollToId(item.id), 300); }}
                     className={cn(
-                      "flex items-center justify-between py-5 text-4xl transition-all duration-300",
+                      "group flex items-center justify-between py-2 text-3xl font-display font-medium transition-all duration-300",
                       isActive
-                        ? "text-white font-black translate-x-2"
-                        : "text-white/10 font-bold"
+                        ? "text-white"
+                        : "text-white/30 hover:text-white"
                     )}
                   >
-                    {item.label}
+                    <span className="relative text-start">
+                      {item.label}
+                      {isActive && (
+                        <motion.div
+                          layoutId="mobileActiveLine"
+                          className="absolute -left-6 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-[#23ADCF]"
+                        />
+                      )}
+                    </span>
                     <ArrowRight className={cn(
-                      "w-6 h-6 transition-all",
-                      isActive ? "text-[#23ADCF] opacity-100" : "opacity-0"
+                      "w-6 h-6 transform transition-all duration-300 group-hover:translate-x-2",
+                      isActive ? "text-[#23ADCF] opacity-100" : "opacity-0 group-hover:opacity-100 group-hover:text-white"
                     )} />
                   </motion.button>
                 );
               })}
             </nav>
+
+            {/* Explicit Close Button inside Menu Overlay */}
+            <motion.button
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.5 }}
+              onClick={() => setMobileMenuOpen(false)}
+              className="absolute top-6 right-6 p-4 rounded-full bg-white/10 text-white z-20 hover:bg-white/20 active:scale-90 transition-all border border-white/20"
+            >
+              <X className="w-4 h-4" />
+            </motion.button>
+
+
+            {/* Close functionality via header button (which is z-70 above this z-65 overlay) */}
           </motion.div>
         )}
       </AnimatePresence>

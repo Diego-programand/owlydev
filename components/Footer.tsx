@@ -136,8 +136,8 @@ export default function Footer() {
 
           <div className="flex items-center gap-8 w-full md:w-auto justify-center">
             <div className="flex gap-6 text-[10px] text-white/40 uppercase tracking-widest font-bold">
-              <a href="#" className="hover:text-white transition-colors">Privacidad</a>
-              <a href="#" className="hover:text-white transition-colors">Términos</a>
+              <a href="/privacy" className="hover:text-white transition-colors">Privacidad</a>
+              <a href="/terms" className="hover:text-white transition-colors">Términos</a>
             </div>
 
             <motion.button

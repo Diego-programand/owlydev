@@ -4,15 +4,10 @@ import { Suspense, lazy } from "react";
 import { motion } from "framer-motion";
 import { site } from "@/lib/site";
 import { cn } from "@/lib/utils";
-import { ArrowRight, Sparkles, Zap, Clock, Shield } from "lucide-react";
+import { ArrowRight, Rocket } from "lucide-react";
 
 const AnimatedBackground = lazy(() => import("@/components/ui/animated-background"));
 
-const trustMetrics = [
-  { icon: Zap, value: "< 1s", label: "Carga", color: "#BDE8F5" },
-  { icon: Clock, value: "2-3 sem", label: "Entrega", color: "#4988C4" },
-  { icon: Shield, value: "100%", label: "Garantía", color: "#BDE8F5" },
-];
 
 export default function Hero() {
   const scrollToId = (id: string) => {
@@ -92,8 +87,8 @@ export default function Hero() {
               onClick={() => scrollToId("contact")}
               className="flex w-full items-center justify-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-8 py-4 font-bold text-white backdrop-blur-md transition-all hover:bg-white/10 active:scale-95 sm:w-auto"
             >
-              <Sparkles className="h-5 w-5 text-[#BDE8F5]" />
-              Auditoría gratis
+              <Rocket className="h-5 w-5 text-[#23ADCF]" />
+              Asesoría gratis
             </button>
           </motion.div>
         </div>
