@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
 import {
   Sparkles,
   Zap,
@@ -46,6 +47,87 @@ const services = [
   },
 ];
 
+const ServiceCard = ({ service, index }: { service: typeof services[0]; index: number }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { margin: "-20% 0px -20% 0px" });
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 1024);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  const isActive = isMobile && isInView;
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 15 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ delay: index * 0.1 }}
+      className={`group relative p-8 rounded-2xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] hover:border-[#0062cc]/10 transition-all duration-300 ${isActive ? "bg-white/[0.04] border-[#0062cc]/10" : ""
+        }`}
+    >
+      {/* Icon & Metric */}
+      <div className="flex items-start justify-between mb-8">
+        <div
+          className={`w-12 h-12 rounded-lg flex items-center justify-center bg-white/5 text-[#0062cc] group-hover:bg-[#0062cc] group-hover:text-[#0A0F1C] transition-colors duration-500 ${isActive ? "bg-[#0062cc] text-[#0A0F1C]" : ""
+            }`}
+        >
+          <service.icon className="w-6 h-6" />
+        </div>
+        <span
+          className={`text-[10px] font-bold py-1 px-3 rounded-md bg-white/5 text-white/60 border border-white/5 tracking-wider group-hover:text-[#0062cc] transition-colors duration-500 ${isActive ? "text-[#0062cc]" : ""
+            }`}
+        >
+          {service.metric}
+        </span>
+      </div>
+
+      {/* Content */}
+      <div className="space-y-4">
+        <p className="text-[white]/70 text-[10px] font-bold uppercase tracking-[0.2em]">
+          {service.problem}
+        </p>
+        <h3
+          className={`text-xl font-bold text-white group-hover:text-[#0062cc] transition-colors ${isActive ? "text-[#0062cc]" : ""
+            }`}
+        >
+          {service.title}
+        </h3>
+        <p className="text-sm text-white/50 leading-relaxed font-jakarta">
+          {service.description}
+        </p>
+
+        {/* Benefits List */}
+        <div className="grid grid-cols-1 gap-2 pt-4">
+          {service.benefits.map((benefit, i) => (
+            <div key={i} className="flex items-center gap-2">
+              <div className="w-1 h-1 rounded-full bg-[#0062cc]/40" />
+              <span className="text-xs text-white/80 font-jakarta">{benefit}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Minimal Arrow */}
+      <a
+        href="#contact"
+        className={`mt-8 flex items-center gap-2 text-[13px] font-bold uppercase tracking-widest text-white/70 group-hover:text-white group-hover:underline group-hover:underline-offset-4 transition-all duration-500 group-hover:cursor-pointer hover:text-[#0062cc] hover:underline group-hover:text-[14px] ${isActive ? "text-white underline underline-offset-4 text-[14px]" : ""
+          }`}
+      >
+        <span>Solicitar información</span>
+        <ArrowRight
+          className={`w-3 h-3 transform group-hover:translate-x-1 transition-transform ${isActive ? "translate-x-1" : ""
+            }`}
+        />
+      </a>
+    </motion.div>
+  );
+};
+
 export default function Services() {
   return (
     <section id="services" className="relative py-24 bg-[#00070D]">
@@ -76,64 +158,19 @@ export default function Services() {
         {/* Services Grid - Tarjetas limpias y técnicas */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {services.map((service, index) => (
-            <motion.div
-              key={service.title}
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              className="group relative p-8 rounded-2xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] hover:border-[#0062cc]/10 transition-all duration-300"
-            >
-              {/* Icon & Metric */}
-              <div className="flex items-start justify-between mb-8">
-                <div className="w-12 h-12 rounded-lg flex items-center justify-center bg-white/5 text-[#0062cc] group-hover:bg-[#0062cc] group-hover:text-[#0A0F1C] transition-colors duration-500">
-                  <service.icon className="w-6 h-6" />
-                </div>
-                <span className="text-[10px] font-bold py-1 px-3 rounded-md bg-white/5 text-white/40 border border-white/5 tracking-wider group-hover:text-[#0062cc] transition-colors duration-500">
-                  {service.metric}
-                </span>
-              </div>
-
-              {/* Content */}
-              <div className="space-y-4">
-                <p className="text-[white]/70 text-[10px] font-bold uppercase tracking-[0.2em]">
-                  {service.problem}
-                </p>
-                <h3 className="text-xl font-bold text-white group-hover:text-[#0062cc] transition-colors">
-                  {service.title}
-                </h3>
-                <p className="text-sm text-white/50 leading-relaxed font-jakarta">
-                  {service.description}
-                </p>
-
-                {/* Benefits List */}
-                <div className="grid grid-cols-1 gap-2 pt-4">
-                  {service.benefits.map((benefit, i) => (
-                    <div key={i} className="flex items-center gap-2">
-                      <div className="w-1 h-1 rounded-full bg-[#0062cc]/40" />
-                      <span className="text-xs text-white/80 font-jakarta">{benefit}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Minimal Arrow */}
-              <a href="#contact" className="mt-8 flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-white/20 group-hover:text-white group-hover:underline group-hover:underline-offset-4 transition-all duration-500 group-hover:cursor-pointer hover:text-[#0062cc] hover:underline group-hover:text-[12px]">
-                <span>Solicitar información</span>
-                <ArrowRight className="w-3 h-3 transform group-hover:translate-x-1 transition-transform" />
-              </a>
-            </motion.div>
+            <ServiceCard key={service.title} service={service} index={index} />
           ))}
         </div>
 
         {/* Minimal Tech Stack Banner */}
-        <div className="mt-20 pt-8 border-t border-white/5 flex flex-wrap justify-center md:justify-between items-center gap-8 opacity-30 grayscale hover:grayscale-0 transition-all duration-700">
+        <div className="mt-20 pt-8 border-t border-white/5 flex flex-wrap justify-center md:justify-between items-center gap-8 opacity-50 grayscale hover:grayscale-0 transition-all duration-700">
           <span className="text-[10px] font-bold text-white uppercase tracking-[0.3em]">Stack Profesional:</span>
-          {["Next.js", "Laravel", "React", "TypeScript", "PostgreSQL", "Stripe", "Tailwind CSS", "Python"].map((tech) => (
-            <span key={tech} className="text-xs font-jakarta text-white font-semibold">{tech}</span>
+          {["Next.js", "Laravel", "React", "TypeScript", "PostgreSQL", "Stripe", "Tailwind CSS", "Python", "n8n", "AWS", "Vercel"].map((tech) => (
+            < span key={tech} className="text-xs font-jakarta text-white font-semibold" > {tech}</span>
           ))}
         </div>
 
       </div>
-    </section>
+    </section >
   );
 }
