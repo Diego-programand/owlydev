@@ -83,7 +83,7 @@ export default function Navbar() {
             >
               <div className="relative w-8 h-10 flex items-center justify-center">
                 <Image
-                  src="/IsoTipoOwlyDev.webp"
+                  src="/branding/iso-tipo.webp"
                   alt="Logo OwlyDev"
                   width={32}
                   height={40}
