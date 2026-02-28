@@ -2,9 +2,9 @@ import { MetadataRoute } from 'next'
 
 export default function robots(): MetadataRoute.Robots {
   // Definimos la URL base dependiendo de si estás en desarrollo o producción
-  const baseUrl = process.env.NODE_ENV === 'development' 
-    ? 'http://localhost:3000' 
-    : 'https://owlydev.com'
+  const baseUrl = process.env.NODE_ENV === 'development'
+    ? 'http://localhost:3000'
+    : 'https://owlydev.vercel.app'
 
   return {
     rules: {

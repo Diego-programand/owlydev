@@ -113,7 +113,7 @@ export default function Portfolio() {
                             <div className="relative h-2/3 overflow-hidden">
                                 <img
                                     src={project.image}
-                                    alt={project.title}
+                                    alt={`Proyecto ${project.title} - Desarrollo de Software y Soluciones Digitales por OwlyDev`}
                                     className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-[#00030A] via-[#00030A]/20 to-transparent" />

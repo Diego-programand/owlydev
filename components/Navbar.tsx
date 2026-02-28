@@ -84,7 +84,7 @@ export default function Navbar() {
               <div className="relative w-8 h-10 flex items-center justify-center">
                 <Image
                   src="/branding/iso-tipo.webp"
-                  alt="Logo OwlyDev"
+                  alt="Logo OwlyDev - Desarrollo de Software en Medellín"
                   width={32}
                   height={40}
                   className="object-contain transition-transform group-hover:rotate-6"

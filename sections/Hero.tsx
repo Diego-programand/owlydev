@@ -51,9 +51,9 @@ export default function Hero() {
             transition={{ delay: 0.1 }}
           >
             <h1 className="font-display text-4xl font-bold leading-[1.1] text-white sm:text-5xl lg:text-6xl">
-              Desarrollo de <span className="text-[#23ADCF]">Sitios Web</span> que <br className="hidden sm:block" />
+              Desarrollo de <span className="text-[#23ADCF]">Software</span> y <br className="hidden sm:block" />
               <span className="bg-gradient-to-r from-[#23ADCF] to-[#0062cc] bg-clip-text text-transparent">
-                venden mientras duermes
+                Landing Pages Profesionales
               </span>
             </h1>
           </motion.div>

@@ -24,10 +24,10 @@ const jakarta = Plus_Jakarta_Sans({
  * 2. VIEWPORT & TEMA
  */
 export const viewport: Viewport = {
-  themeColor: "#16263a", // Ajustado al color de tu fondo de marca
+  themeColor: "#16263a",
   width: "device-width",
   initialScale: 1,
-  maximumScale: 5, // Permite accesibilidad pero evita zoom accidental
+  maximumScale: 5,
 };
 
 /**
@@ -35,19 +35,22 @@ export const viewport: Viewport = {
  */
 const baseUrl = process.env.NODE_ENV === 'development'
   ? 'http://localhost:3000'
-  : 'https://owlydev.com';
+  : 'https://owlydev.vercel.app';
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   applicationName: "OwlyDev",
   title: {
-    default: "OwlyDev | Expertos en Desarrollo Web y Estrategia de Conversión",
+    default: "OwlyDev | Desarrollo de Software y Soluciones Digitales",
     template: "%s | OwlyDev"
   },
-  description: "Transformamos visiones en activos digitales de alto rendimiento. Especialistas en Next.js, eCommerce y UX/UI para negocios que buscan escalar.",
-  keywords: ["OwlyDev", "Desarrollo web Next.js", "Diseño UX/UI", "Ecommerce profesional", "Paneles administrativos"],
+  description: "Transforma tu negocio con desarrollo de software a medida y landing pages profesionales. Soluciones digitales escalables por OwlyDev Medellín.",
+  keywords: ["desarrollo de software", "landing pages profesionales", "soluciones digitales", "OwlyDev Medellín", " Next.js", "ecommerce", "software"],
   authors: [{ name: "OwlyDev", url: baseUrl }],
   creator: "OwlyDev",
+  alternates: {
+    canonical: baseUrl,
+  },
 
   // Icons
   icons: {
@@ -66,26 +69,26 @@ export const metadata: Metadata = {
 
   // OpenGraph (Facebook/LinkedIn)
   openGraph: {
-    title: "OwlyDev | Code with Soul",
-    description: "Innovación digital que cautiva. Software robusto que escala.",
+    title: "OwlyDev | Desarrollo de Software y Soluciones Digitales",
+    description: "Transforma tu negocio con desarrollo de software a medida y landing pages profesionales. Soluciones digitales escalables por OwlyDev Medellín.",
     url: baseUrl,
     siteName: "OwlyDev",
     locale: "es_ES",
     type: "website",
     images: [{
-      url: "/api/og",
+      url: "/branding/iso-tipo.webp",
       width: 1200,
       height: 630,
-      alt: "OwlyDev - Soluciones Digitales Premium",
+      alt: "OwlyDev - Desarrollo de Software y Soluciones Digitales",
     }],
   },
 
   // Twitter
   twitter: {
     card: "summary_large_image",
-    title: "OwlyDev | Desarrollo Web Pro",
-    description: "Creamos la tecnología que tu negocio necesita para crecer.",
-    images: ["/api/og"],
+    title: "OwlyDev | Desarrollo de Software y Soluciones Digitales",
+    description: "Transforma tu negocio con desarrollo de software a medida y landing pages profesionales.",
+    images: ["/branding/iso-tipo.webp"],
   },
 
   // Mobile Web App
@@ -121,6 +124,27 @@ export default function RootLayout({
           overflow-x-hidden
         `}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "ProfessionalService",
+              "name": "OwlyDev",
+              "url": baseUrl,
+              "logo": `${baseUrl}/branding/iso-tipo.webp`,
+              "email": "owlydev.team@gmail.com",
+              "description": "Desarrollo de software y soluciones digitales en Medellín. Expertos en landing pages profesionales y desarrollo web a medida.",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Medellín",
+                "addressRegion": "Antioquia",
+                "addressCountry": "CO"
+              },
+              "image": `${baseUrl}/branding/iso-tipo.webp`
+            })
+          }}
+        />
         {children}
       </body>
     </html>

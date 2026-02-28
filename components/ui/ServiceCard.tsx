@@ -19,7 +19,7 @@ export function ServiceCard({ service }: { service: Service }) {
       <div className="absolute inset-0 z-0">
         <Image
           src={service.img}
-          alt={service.title}
+          alt={`${service.title} - Soluciones Digitales OwlyDev`}
           fill
           priority
           className="object-cover transition-transform duration-[2000ms] group-hover:scale-110"
@@ -32,7 +32,7 @@ export function ServiceCard({ service }: { service: Service }) {
       <div className="relative z-10 flex h-full flex-col justify-end p-6 pb-32 md:p-20 md:pb-40">
         <div className="max-w-4xl">
           {/* Badge o Categoría (Opcional) */}
-          <motion.span 
+          <motion.span
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             className="mb-4 inline-block text-xs font-bold uppercase tracking-widest text-[#23ADCF]"
@@ -41,7 +41,7 @@ export function ServiceCard({ service }: { service: Service }) {
           </motion.span>
 
           {/* Título: Siempre visible pero con animación de entrada */}
-          <motion.h3 
+          <motion.h3
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.2 }}
