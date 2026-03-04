@@ -1,6 +1,7 @@
 "use client";
 
 import { Suspense, lazy } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { site } from "@/lib/site";
 import { cn } from "@/lib/utils";
@@ -19,77 +20,100 @@ export default function Hero() {
     <section
       id="hero"
       // CAMBIO: pt-36 para dar aire superior y pb-24 para separar del indicador inferior
-      className="relative flex min-h-[100dvh] items-center justify-center overflow-hidden bg-[#0A0F1C] px-4 pt-36 pb-24 md:pt-24"
+      className="relative flex min-h-[100dvh] items-center justify-center overflow-hidden bg-[#0A0F1C] px-6 sm:px-8 lg:px-16 xl:px-8 pt-28 pb-20 md:pt-24 lg:pt-20"
     >
       {/* Background & Effects */}
       <Suspense fallback={<div className="absolute inset-0 bg-[#0A0F1C]" />}>
         <AnimatedBackground />
       </Suspense>
 
-      <div className="relative z-20 w-full max-w-5xl mx-auto">
-        <div className="flex flex-col items-center space-y-6 text-center md:space-y-8">
+      <div className="relative z-20 w-full max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 xl:gap-16 items-center">
+          {/* Columna Izquierda (Texto) */}
+          <div className="flex flex-col items-center lg:items-start space-y-6 text-center lg:text-left md:space-y-6 xl:space-y-8">
 
-          {/* Badge de Social Proof */}
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 rounded-full border border-[#BDE8F5]/30 bg-[#BDE8F5]/5 px-4 py-2 backdrop-blur-sm"
-          >
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#BDE8F5] opacity-75" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-[#BDE8F5]" />
-            </span>
-            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#BDE8F5]">
-              +47 proyectos entregados en 2025
-            </span>
-          </motion.div>
-
-          {/* Headline */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-          >
-            <h1 className="font-display text-4xl font-bold leading-[1.1] text-white sm:text-5xl lg:text-6xl">
-              Desarrollo de <span className="text-[#23ADCF]">Software</span> y <br className="hidden sm:block" />
-              <span className="bg-gradient-to-r from-[#23ADCF] to-[#0062cc] bg-clip-text text-transparent">
-                Landing Pages Profesionales
+            {/* Badge de Social Proof */}
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="inline-flex items-center gap-2 rounded-full border border-[#BDE8F5]/30 bg-[#BDE8F5]/5 px-4 py-2 backdrop-blur-sm"
+            >
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#BDE8F5] opacity-75" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-[#BDE8F5]" />
               </span>
-            </h1>
-          </motion.div>
+              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#BDE8F5]">
+                +47 proyectos entregados en 2025
+              </span>
+            </motion.div>
 
-          {/* Subheadline */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="max-w-2xl font-jakarta text-base text-white/60 md:text-xl leading-relaxed"
-          >
-            Sin procesos largos. Sin estafas. Solo resultados medibles en 30 días. Desarrollo de alto rendimiento con garantía de velocidad.
-          </motion.p>
+            {/* Headline */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+            >
+              <h1 className="font-display text-4xl font-bold leading-[1.1] text-white sm:text-5xl lg:text-4xl xl:text-6xl">
+                Desarrollo de <span className="text-[#23ADCF]">Software</span> y <br className="hidden lg:block xl:hidden 2xl:block" />
+                <span className="bg-gradient-to-r from-[#23ADCF] to-[#0062cc] bg-clip-text text-transparent">
+                  Landing Pages Profesionales
+                </span>
+              </h1>
+            </motion.div>
 
-          {/* Botones */}
+            {/* Subheadline */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="max-w-2xl font-jakarta text-base text-white/60 md:text-lg xl:text-xl leading-relaxed"
+            >
+              Sin procesos largos. Sin estafas. Solo resultados medibles en 30 días. Desarrollo de alto rendimiento con garantía de velocidad.
+            </motion.p>
+
+            {/* Botones */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="flex w-full flex-col items-center justify-center lg:justify-start gap-3 sm:flex-row sm:gap-4"
+            >
+              <button
+                onClick={() => scrollToId("portfolio")}
+                className="group relative flex w-full items-center justify-center gap-2 overflow-hidden rounded-2xl bg-gradient-to-r from-[#23ADCF] to-[#0062cc] px-6 py-3 xl:px-8 xl:py-4 font-bold text-white shadow-xl transition-all hover:scale-[1.02] active:scale-95 sm:w-auto text-sm xl:text-base"
+              >
+                Ver casos reales
+                <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+              </button>
+
+              <button
+                onClick={() => scrollToId("contact")}
+                className="flex w-full items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-6 py-3 xl:px-8 xl:py-4 font-bold text-white backdrop-blur-md transition-all hover:bg-white/10 active:scale-95 sm:w-auto text-sm xl:text-base"
+              >
+                <Rocket className="h-5 w-5 text-[#23ADCF]" />
+                Asesoría gratis
+              </button>
+            </motion.div>
+          </div>
+
+          {/* Columna Derecha (Imagen) */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="flex w-full flex-col items-center justify-center gap-4 sm:flex-row"
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
+            className="w-full flex justify-center lg:justify-end mt-8 lg:mt-0"
           >
-            <button
-              onClick={() => scrollToId("portfolio")}
-              className="group relative flex w-full items-center justify-center gap-3 overflow-hidden rounded-2xl bg-gradient-to-r from-[#23ADCF] to-[#0062cc] px-8 py-4 font-bold text-white shadow-xl transition-all hover:scale-[1.02] active:scale-95 sm:w-auto"
-            >
-              Ver casos reales
-              <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-            </button>
-
-            <button
-              onClick={() => scrollToId("contact")}
-              className="flex w-full items-center justify-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-8 py-4 font-bold text-white backdrop-blur-md transition-all hover:bg-white/10 active:scale-95 sm:w-auto"
-            >
-              <Rocket className="h-5 w-5 text-[#23ADCF]" />
-              Asesoría gratis
-            </button>
+            {/* Contenedor con aspect ratio proporcional a la imagen original (687x632) */}
+            <div className="relative w-full max-w-[85%] sm:max-w-[65%] lg:max-w-[85%] xl:max-w-full aspect-[687/632] mx-auto lg:mr-0">
+              <Image
+                src="/images/hero-image.png"
+                alt="OwlyDev Software Development and Landing Pages"
+                fill
+                className="object-contain drop-shadow-2xl"
+                priority
+                sizes="(max-width: 1024px) 85vw, (max-width: 1280px) 40vw, 50vw"
+              />
+            </div>
           </motion.div>
         </div>
       </div>
