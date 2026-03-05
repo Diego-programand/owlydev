@@ -153,7 +153,7 @@ export const faqs = [
   },
   {
     question: "¿Cuánto cuesta y cuánto tiempo tardan?",
-    answer: "Proyectos desde $800K COP hasta $5M COP dependiendo de tus necesidades. Pero piénsalo así: si tu web trae solo 3 clientes extra al mes, se paga sola en 90 días. Tiempos de entrega: Landing pages en 2-3 semanas, Ecommerce en 4-6 semanas, Dashboards en 3-5 semanas. Primera versión funcional siempre en menos de 1 mes. Nada de esperas eternas."
+    answer: "Soluciones desde $500K COP ($125 USD) hasta $3M COP ($750 USD) según la complejidad.Entregamos una versión funcional en menos de un mes y el proyecto final en 2 a 5 semanas. Está diseñado para que con solo 3 clientes extra al mes, tu inversión se recupere en 90 días. Nada de esperas largas"
   },
   {
     question: "¿Qué pasa después de la entrega? ¿Me dejan solo?",
