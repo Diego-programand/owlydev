@@ -1,5 +1,14 @@
+import { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+
+export const metadata: Metadata = {
+    title: "Términos y Condiciones",
+    description: "Lee nuestros Términos y Condiciones. Transparencia, legalidad y seguridad garantizadas para nuestros clientes de desarrollo web y software.",
+    alternates: {
+        canonical: "/terms"
+    }
+};
 
 export default function Terms() {
     return (

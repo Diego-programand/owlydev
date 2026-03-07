@@ -114,6 +114,7 @@ export default function Portfolio() {
                                 <img
                                     src={project.image}
                                     alt={`Proyecto ${project.title} - Desarrollo de Software y Soluciones Digitales por OwlyDev`}
+                                    loading="lazy"
                                     className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-[#00030A] via-[#00030A]/20 to-transparent" />
@@ -144,10 +145,10 @@ export default function Portfolio() {
                                     </p>
                                 </div>
 
-                                <button onClick={() => window.open(project.link, "_blank")} className="mt-8 flex items-center gap-2 text-[13px] font-bold uppercase tracking-widest text-white/60 group-hover:text-white group-hover:underline group-hover:underline-offset-4 transition-all duration-500 group-hover:cursor-pointer hover:text-[#0062cc] hover:underline group-hover:text-[12px]">
+                                <a href={project.link} target="_blank" rel="noopener noreferrer" title={`Ver proyecto ${project.title}`} className="mt-8 flex items-center gap-2 text-[13px] font-bold uppercase tracking-widest text-white/60 group-hover:text-white group-hover:underline group-hover:underline-offset-4 transition-all duration-500 group-hover:cursor-pointer hover:text-[#0062cc] hover:underline group-hover:text-[12px]">
                                     Analizar Caso
                                     <ArrowUpRight className="w-3 h-3 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-                                </button>
+                                </a>
                             </div>
                         </motion.div>
                     ))}

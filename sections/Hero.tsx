@@ -78,21 +78,25 @@ export default function Hero() {
               transition={{ delay: 0.3 }}
               className="flex w-full flex-col items-center justify-center lg:justify-start gap-3 sm:flex-row sm:gap-4"
             >
-              <button
-                onClick={() => scrollToId("portfolio")}
+              <a
+                href="#portfolio"
+                onClick={(e) => { e.preventDefault(); scrollToId("portfolio"); }}
+                title="Ver casos reales de éxito"
                 className="group relative flex w-full items-center justify-center gap-2 overflow-hidden rounded-2xl bg-gradient-to-r from-[#23ADCF] to-[#0062cc] px-6 py-3 xl:px-8 xl:py-4 font-bold text-white shadow-xl transition-all hover:scale-[1.02] active:scale-95 sm:w-auto text-sm xl:text-base"
               >
                 Ver casos reales
                 <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-              </button>
+              </a>
 
-              <button
-                onClick={() => scrollToId("contact")}
+              <a
+                href="#contact"
+                onClick={(e) => { e.preventDefault(); scrollToId("contact"); }}
+                title="Solicitar asesoría gratis y revisión de negocio"
                 className="flex w-full items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-6 py-3 xl:px-8 xl:py-4 font-bold text-white backdrop-blur-md transition-all hover:bg-white/10 active:scale-95 sm:w-auto text-sm xl:text-base"
               >
                 <Rocket className="h-5 w-5 text-[#23ADCF]" />
                 Asesoría gratis
-              </button>
+              </a>
             </motion.div>
           </div>
 
@@ -106,7 +110,7 @@ export default function Hero() {
             {/* Contenedor con aspect ratio proporcional a la imagen original (687x632) */}
             <div className="relative w-full max-w-[85%] sm:max-w-[65%] lg:max-w-[85%] xl:max-w-full aspect-[687/632] mx-auto lg:mr-0">
               <Image
-                src="/images/hero-image.png"
+                src="/images/hero-image.webp"
                 alt="OwlyDev Software Development and Landing Pages"
                 fill
                 className="object-contain drop-shadow-2xl"

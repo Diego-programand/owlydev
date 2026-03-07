@@ -43,7 +43,7 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const itemRefs = useRef<Record<string, HTMLButtonElement | null>>({});
+  const itemRefs = useRef<Record<string, HTMLAnchorElement | null>>({});
   const [indicator, setIndicator] = useState({ left: 0, width: 0, opacity: 0 });
 
   useLayoutEffect(() => {
@@ -104,10 +104,12 @@ export default function Navbar() {
                 .map((item) => {
                   const isActive = active === item.id;
                   return (
-                    <button
+                    <a
                       key={item.id}
+                      href={`#${item.id}`}
                       ref={(node) => { itemRefs.current[item.id] = node; }}
-                      onClick={() => scrollToId(item.id)}
+                      onClick={(e) => { e.preventDefault(); scrollToId(item.id); }}
+                      title={`Ir a sección de ${item.label}`}
                       className={cn(
                         "relative px-5 py-2.5 text-[11px] uppercase tracking-widest transition-all duration-500 z-10 flex items-center h-full",
                         isActive
@@ -116,7 +118,7 @@ export default function Navbar() {
                       )}
                     >
                       {item.label}
-                    </button>
+                    </a>
                   );
                 })}
 
@@ -133,14 +135,16 @@ export default function Navbar() {
 
             {/* BOTONES DERECHA */}
             <div className="flex items-center gap-3">
-              <motion.button
-                onClick={() => scrollToId("contact")}
+              <motion.a
+                href="#contact"
+                onClick={(e: React.MouseEvent<HTMLAnchorElement>) => { e.preventDefault(); scrollToId("contact"); }}
+                title="Ir a formulario de contacto web"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="hidden lg:inline-flex px-6 py-2.5 rounded-xl bg-gradient-to-r from-[#23ADCF] to-[#0062cc] text-white text-[11px] font-black uppercase tracking-widest shadow-lg shadow-[#23ADCF]/20 hover:shadow-[#23ADCF]/40 transition-shadow"
               >
                 Contacto
-              </motion.button>
+              </motion.a>
 
               {/* Toggle Menu Mobile (Visible < LG) */}
               <motion.button

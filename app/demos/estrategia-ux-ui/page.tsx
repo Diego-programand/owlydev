@@ -1,5 +1,14 @@
+import { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+
+export const metadata: Metadata = {
+  title: "Auditoría UX/UI | Optimización de Conversión",
+  description: "Elimina obstáculos y aumenta las ventas de tu web con nuestra auditoría profunda de experiencia de usuario e interfaz (UX/UI).",
+  alternates: {
+    canonical: "/demos/estrategia-ux-ui"
+  }
+};
 
 export default function Page() {
   return (
@@ -8,7 +17,7 @@ export default function Page() {
         <div className="flex items-center justify-between gap-4">
           <div>
             <h1 className="font-display text-3xl font-extrabold text-white">
-              Discord Dashboard
+              Auditoría UX/UI
             </h1>
             <p className="mt-2 text-white/70">
               Demo de panel para administración del bot (UI base).

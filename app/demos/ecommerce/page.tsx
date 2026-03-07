@@ -1,5 +1,14 @@
+import { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+
+export const metadata: Metadata = {
+  title: "Arquitectura Ecommerce Premium | Tiendas que Venden",
+  description: "Descubre nuestra arquitectura ecommerce premium. Plataformas rápidas, checkout optimizado y diseño orientado a maximizar conversiones para tu tienda.",
+  alternates: {
+    canonical: "/demos/ecommerce"
+  }
+};
 
 export default function Page() {
   return (
@@ -8,10 +17,10 @@ export default function Page() {
         <div className="flex items-center justify-between gap-4">
           <div>
             <h1 className="font-display text-3xl font-extrabold text-white">
-              Discord Dashboard
+              Arquitectura Ecommerce
             </h1>
             <p className="mt-2 text-white/70">
-              Demo de panel para administración del bot (UI base).
+              Demo de tienda online alto rendimiento y checkout optimizado.
             </p>
           </div>
 

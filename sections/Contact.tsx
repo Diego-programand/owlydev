@@ -101,9 +101,16 @@ export default function Contact() {
             {/* Social Social */}
             <div className="pt-8 border-t border-white/5">
               <p className="text-[10px] font-bold text-white/50 uppercase tracking-[0.3em] mb-4">Contacto Directo</p>
-              <a href="mailto:owlydev.team@gmail.com" className="text-white/70 hover:text-[#4988C4] transition-colors font-jakarta text-sm">
-                owlydev.team@gmail.com
-              </a>
+              <div className="flex flex-col gap-3">
+                <a href="mailto:owlydev.team@gmail.com" className="inline-flex items-center gap-2 text-white/70 hover:text-[#4988C4] transition-colors font-jakarta text-sm">
+                  <Mail className="w-4 h-4" />
+                  owlydev.team@gmail.com
+                </a>
+                <a href="https://wa.me/573028584906?text=Hola%20OwlyDev,%20me%20interesa%20escalar%20mi%20negocio%20con%20ustedes" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-white/70 hover:text-[#25D366] transition-colors font-jakarta text-sm">
+                  <MessageSquare className="w-4 h-4" />
+                  +57 3028584906
+                </a>
+              </div>
             </div>
           </div>
 

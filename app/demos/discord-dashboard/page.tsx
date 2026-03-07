@@ -1,5 +1,14 @@
+import { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+
+export const metadata: Metadata = {
+  title: "Demo Discord Dashboard | Automatización OwlyDev",
+  description: "Explora la demo interactiva de nuestro panel de control de bots para Discord. Automatiza tareas y gestiona tu comunidad con eficiencia y código escalable.",
+  alternates: {
+    canonical: "/demos/discord-dashboard"
+  }
+};
 
 export default function Page() {
   return (

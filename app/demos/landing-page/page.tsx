@@ -1,5 +1,14 @@
+import { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+
+export const metadata: Metadata = {
+  title: "Landing Pages Profesionales | Alta Conversión",
+  description: "Atrae, retén y convierte a tus visitantes con landing pages rápidas y persuasivas. Diseño diseñado psicológicamente para tu negocio.",
+  alternates: {
+    canonical: "/demos/landing-page"
+  }
+};
 
 export default function Page() {
   return (
@@ -8,7 +17,7 @@ export default function Page() {
         <div className="flex items-center justify-between gap-4">
           <div>
             <h1 className="font-display text-3xl font-extrabold text-white">
-              Discord Dashboard
+              Landing Page Profesional
             </h1>
             <p className="mt-2 text-white/70">
               Demo de panel para administración del bot (UI base).

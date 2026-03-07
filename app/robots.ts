@@ -15,6 +15,7 @@ export default function robots(): MetadataRoute.Robots {
         '/api/',      // No queremos que indexen tus rutas de API internas
         '/_next/',    // Archivos internos de funcionamiento de Next.js
         '/private',   // Cualquier carpeta de archivos privados
+        '/node_modules/', // Evitar rastreo de librerías
       ],
     },
     // Le decimos dónde encontrar el mapa del sitio para que lo recorra eficientemente

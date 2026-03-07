@@ -111,6 +111,8 @@ export default function Footer() {
 
               <a
                 href="https://tiktok.com/@owlydev"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group flex items-center gap-4 p-4 rounded-2xl border border-white/5 bg-white/[0.02] active:scale-[0.98] transition-all"
               >
                 <div className="shrink-0 w-10 h-10 rounded-xl bg-[#23ADCF]/10 flex items-center justify-center group-hover:bg-[#23ADCF]/20">
@@ -119,6 +121,21 @@ export default function Footer() {
                 <div className="min-w-0">
                   <p className="text-[9px] uppercase text-white/40 font-black tracking-wider">TikTok</p>
                   <p className="text-sm text-white/80 truncate font-medium">@owlydev</p>
+                </div>
+              </a>
+
+              <a
+                href="https://wa.me/573028584906?text=Hola%20OwlyDev,%20me%20interesa%20escalar%20mi%20negocio%20con%20ustedes"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-4 p-4 rounded-2xl border border-white/5 bg-white/[0.02] active:scale-[0.98] transition-all"
+              >
+                <div className="shrink-0 w-10 h-10 rounded-xl bg-[#23ADCF]/10 flex items-center justify-center group-hover:bg-[#25D366]/20">
+                  <MessageCircle className="w-5 h-5 text-[#23ADCF] group-hover:text-[#25D366]" />
+                </div>
+                <div className="min-w-0">
+                  <p className="text-[9px] uppercase text-white/40 font-black tracking-wider">WhatsApp</p>
+                  <p className="text-sm text-white/80 truncate font-medium">+57 3028584906</p>
                 </div>
               </a>
             </div>
