@@ -35,7 +35,7 @@ export const viewport: Viewport = {
  */
 const baseUrl = process.env.NODE_ENV === 'development'
   ? 'http://localhost:3000'
-  : 'https://owlydev.vercel.app';
+  : 'https://owlydev.com';
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),

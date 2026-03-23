@@ -39,7 +39,7 @@ const projects: Project[] = [
         metric: "Reducción crítica de errores en reservaciones y control total de stock.",
         category: "Custom Software",
         image: "https://lh3.googleusercontent.com/gps-cs-s/AHVAweoV1MH9qDYAe6nZnsiGknOL24hIuj458Xw_j80wr4LVoY3Ni6o0enGoHiSCA8XgRiLnSvxNdt9_8AGGhsiTuES_HE3XsFzrYI-dXhP0idJxzrPkBg0iBad1gigAy8gJT716IBMsB6qMNk0=s680-w680-h510-rw",
-        link: "https://owlydev.vercel.app/",
+        link: "https://owlydev.com/",
         icon: <LayoutDashboard className="w-5 h-5" />,
     },
 ];
